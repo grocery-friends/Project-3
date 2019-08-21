@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import Header from "./components/layout/Header";
-import Todos from "./components/Todo";
+import Todos from "../todo/Todo";
 import Nav from "./components/layout/LoginList";
-import AddTodo from "./components/AddTodo";
+import AddTodo from "../todo/AddTodo";
 import uuid from "uuid";
 
 import "./App.css";
