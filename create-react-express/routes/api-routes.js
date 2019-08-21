@@ -36,7 +36,7 @@ module.exports = function(app) {
   // Route for logging user out
   app.get("/logout", function(req, res) {
     req.logout();
-    res.redirect("/");
+    res.json("/");
   });
 
   // Route for getting some data about our user to be used client side
@@ -50,6 +50,7 @@ module.exports = function(app) {
       // Sending back a password, even a hashed password, isn't a good idea
       res.json({
         email: req.user.email,
+        fName: req.body.firstName,
         id: req.user.id
       });
     }

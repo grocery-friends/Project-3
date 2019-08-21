@@ -1,23 +1,30 @@
 import React, {useEffect} from "react";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
+import { useStoreContext } from "../utils/GlobalState";
+import { LOADING, CLEAR_CURRENT_USER } from "../utils/actions";
 
-function NavTabs() {
+const NavTabs = props => {
   
-  // useEffect(() => {
-  //   API.logout()
-  //     .then(res =>
-  //     )
-  //     .catch(err => console.log(err));
+  const [state, dispatch] = useStoreContext();
+
+      const handleOnClick = event => {
+        event.preventDefault();
+        dispatch({ type: LOADING });
+        API.logout()
+          .then(user => {dispatch({ type: CLEAR_CURRENT_USER, user });
+          window.location.replace("/")})
+          .catch(err => console.log(err));
       
-  // })
+      };
+
 
   return (
     <ul className="nav nav-tabs">
       <li className="nav-item">
-        <Link to="/Logout" className={window.location.pathname === "/logout" ? "nav-link active" : "nav-link"}>
+        <a onClick={handleOnClick} href="/logout" className={window.location.pathname === "/logout" ? "nav-link active" : "nav-link"}>
           logout
-        </Link>
+        </a>
       </li>
     </ul>
   );

@@ -1,11 +1,13 @@
 const express = require("express");
 const path = require("path");
 const PORT = process.env.PORT || 3001;
+const logger = require("morgan");
 const app = express();
 
 var passport = require("./config/passport");
 var session = require("express-session");
 var db = require("./models");
+app.use(logger("combined"));
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
