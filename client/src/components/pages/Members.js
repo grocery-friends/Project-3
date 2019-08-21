@@ -1,38 +1,76 @@
-import React, { useEffect } from "react";
-import NavTabs from "../NavTabs";
+import React, { Component } from "react";
+// import Header from "./components/layout/Header";
+import Todos from "../todo/Todo";
+// import Nav from "./layout/LoginList";
+import AddTodo from "../todo/AddTodo";
+import uuid from "uuid";
+
+import "./App.css";
 import AppBar from "../AppBar";
-import API from "../../utils/API";
-import { useStoreContext } from "../../utils/GlobalState";
-import { LOADING, SET_CURRENT_USER } from "../../utils/actions";
 
 
-const Members = props => {
+class Members extends Component {
+  state = {
+    todos: [
+      {
+        id: uuid.v4(),
+        title: "2 apple",
+        completed: false
+      },
+      {
+        id: uuid.v4(),
+        title: "cup of noodle",
+        completed: false
+      },
+      {
+        id: uuid.v4(),
+        title: "steak",
+        completed: false
+      }
+    ]
+  };
+  markComplete = id => {
+    this.setState({
+      todos: this.state.todos.map(todo => {
+        if (todo.id === id) {
+          todo.completed = !todo.completed;
+        }
+        return todo;
+      })
+    });
+  };
 
+  delTodo = id => {
+    this.setState({
+      todos: [...this.state.todos.filter(todo => todo.id !== id)]
+    });
+  };
 
-  const [state, dispatch] = useStoreContext();
+  addTodo = title => {
+    const newTodo = {
+      id: uuid.v4(),
+      title,
+      completeted: false
+    };
 
-  useEffect(() => {
-    dispatch({ type: LOADING });
-    API.getCurrentUser(props.match.params.id)
-      .then(user => dispatch({ type: SET_CURRENT_USER, user }))
-      .catch(err => console.log(err));
-  }, []);
+    this.setState({ todos: [...this.state.todos, newTodo] });
+  };
 
- 
-  return (
-    
-    <div>
-      <AppBar />
-      {/* <NavTabs /> */}
-      <h1 className="text-center">{state.currentUser && state.currentUser.email} is logged in</h1>
-      <p>
-        
-        Lorem ipsum dolor sit amet, est ut enim consequat. Nostrum fastidii partiendo sed ne, no
-        mutat ludus aperiri mea, per in choro dolorem electram. Invidunt reprimique assueverit quo
-        ne, eruditi graecis pro ut. Usu ut diceret scaevola evertitur, appareat voluptatibus ad vel.
-      </p>
-    </div>
-  );
+  render() {
+    return (
+        // <Nav className="App">
+          <div className="container">
+            <AppBar />
+            <AddTodo addTodo={this.addTodo} />
+            <Todos
+              todos={this.state.todos}
+              markComplete={this.markComplete}
+              delTodo={this.delTodo}
+            />
+          </div>
+        // </Nav>
+    );
+  }
 }
 
 export default Members;
