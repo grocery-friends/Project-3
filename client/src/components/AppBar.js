@@ -5,10 +5,10 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
-
 import { useStoreContext } from "../utils/GlobalState";
 import { LOADING, CLEAR_CURRENT_USER } from "../utils/actions";
 import API from "../utils/API";
+
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -42,10 +42,10 @@ export default function ButtonAppBar() {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-          </IconButton>
+          {/* <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+          </IconButton> */}
           <Typography variant="h6" className={classes.title}>
-            News
+          Grocery Pals
           </Typography>
           <Button onClick={handleOnClick} color="inherit">Logout</Button>
         </Toolbar>

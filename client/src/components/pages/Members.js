@@ -4,11 +4,10 @@ import Todos from "../todo/Todo";
 // import Nav from "./layout/LoginList";
 import AddTodo from "../todo/AddTodo";
 import uuid from "uuid";
-
 import "./App.css";
 import AppBar from "../AppBar";
-
-
+// import nameDisplay from "./nameDisplay"
+import Drawer from "../Drawer"
 class Members extends Component {
   state = {
     todos: [
@@ -58,9 +57,10 @@ class Members extends Component {
 
   render() {
     return (
-        // <Nav className="App">
+// <Nav className="App">
           <div className="container">
             <AppBar />
+            <Drawer />
             <AddTodo addTodo={this.addTodo} />
             <Todos
               todos={this.state.todos}
@@ -68,7 +68,7 @@ class Members extends Component {
               delTodo={this.delTodo}
             />
           </div>
-        // </Nav>
+// </Nav>
     );
   }
 }
