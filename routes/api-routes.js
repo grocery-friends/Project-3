@@ -55,5 +55,33 @@ module.exports = function(app) {
       });
     }
   });
+  
+  app.post("/api/shoppingList", function(req, res) {
+    console.log(req.body);
+    db.shoppingList.create({
+      title: req.body.title,
+      completed: req.body.completed
+    }).then(function(newItem) {
+      res.json(newItem);
+    }).catch(function(err) {
+      console.log(err);
+      res.sendStatus(500);
+      // res.status(422).json(err.errors[0].message);
+    });
+  });
+
+
+  app.get("/api/shoppingList", function(req, res) {
+    if (!req.user) {
+      res.json({});
+    }
+    else {
+      res.json({
+        title: req.user.title,
+        completed: req.body.completed,
+        id: req.user.id
+      });
+    }
+  });
 
 };
