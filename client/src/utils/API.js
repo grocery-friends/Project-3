@@ -16,10 +16,19 @@ export default {
     return axios.post("/api/signup", userData);
   },
 
-  GetShoppingList: function(shoppingData) {
-    return axios.get("/api/shoppingList", shoppingData).then(results => results.data);
+  GetShoppingList: function() {
+    return axios.get("/api/shoppingList").then(results => results.data);
 },
   PostShoppingList: function(shoppingData) {
   return axios.post("/api/shoppingList", shoppingData).then(results => results.data);
+},
+
+  DeleteShoppingList: function(id) {
+  return axios.delete("/api/shoppingList/"+ id).then(results => results.data);
+},
+
+UpdateShoppingList: function(shoppingData) {
+  return axios.put("/api/shoppingList", shoppingData).then(results => results.data);
 }
+
 };

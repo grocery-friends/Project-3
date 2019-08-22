@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import API from "../../utils/API"
 export class AddTodo extends Component {
 
     state = {
@@ -8,11 +8,18 @@ export class AddTodo extends Component {
 
     onChange = (e) => this.setState({   title: e.target.value});
 
-    onSubmit = (e) => {
-        e.preventDefault();
-        this.props.addTodo(this.state.title);
-        this.setState({title: ''});
-    }
+
+    onSubmit = event => {
+      event.preventDefault();
+      if (this.state.title) {
+        API.PostShoppingList({
+          title: this.state.title,
+        })
+          .then(res => this.props.loadTodos())
+          .catch(err => console.log(err));
+      }
+    };
+
 
   render() {
     return (

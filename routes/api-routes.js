@@ -61,7 +61,8 @@ module.exports = function(app) {
     console.log(req.body);
     db.shoppingList.create({
       title: req.body.title,
-      completed: req.body.completed
+      completed: req.body.completed,
+      UserId : req.user.id
     }).then(function(newItem) {
       res.json(newItem);
     }).catch(function(err) {
@@ -72,7 +73,7 @@ module.exports = function(app) {
   });
 
   app.get("/api/shoppingList", isAuthenticated, function(req, res) {
-    db.PlaneInput.findAll({
+    db.shoppingList.findAll({
       where: {
         UserId: req.user.id
       }
@@ -81,5 +82,26 @@ module.exports = function(app) {
     });
   });
 
+  app.delete("/api/shoppingList/:id", function(req, res) {
+    db.shoppingList.destroy({
+      where: {
+        id: req.params.id
+      }
+    })
+      .then(function(results) {
+        res.json(results);
+      });
+  });
 
+  app.put("/api/shoppingList", function(req, res) {
+    db.shoppingList.update(req.body,
+      {
+        where: {
+          id: req.body.id
+        }
+      })
+      .then(function(results) {
+        res.json(results);
+      });
+  });
 };
