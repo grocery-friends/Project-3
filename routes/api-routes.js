@@ -1,6 +1,7 @@
 // Requiring our models and passport as we've configured it
 var db = require("../models");
 var passport = require("../config/passport");
+var isAuthenticated = require("../config/middleware/isAuthenticated");
 
 module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
@@ -56,7 +57,7 @@ module.exports = function(app) {
     }
   });
   
-  app.post("/api/shoppingList", function(req, res) {
+  app.post("/api/shoppingList", isAuthenticated, function(req, res) {
     console.log(req.body);
     db.shoppingList.create({
       title: req.body.title,
@@ -70,18 +71,15 @@ module.exports = function(app) {
     });
   });
 
-
-  app.get("/api/shoppingList", function(req, res) {
-    if (!req.user) {
-      res.json({});
-    }
-    else {
-      res.json({
-        title: req.user.title,
-        completed: req.body.completed,
-        id: req.user.id
-      });
-    }
+  app.get("/api/shoppingList", isAuthenticated, function(req, res) {
+    db.PlaneInput.findAll({
+      where: {
+        UserId: req.user.id
+      }
+    }).then(function(results) {
+      res.json(results);
+    });
   });
+
 
 };

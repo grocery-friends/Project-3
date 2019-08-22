@@ -39,5 +39,13 @@ module.exports = function(sequelize, DataTypes) {
   User.beforeCreate(function(user) {
     user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10), null);
   });
+  User.associate = function(db) {
+    // Associating make with models
+    // When an make is deleted, also delete any associated models
+    User.hasMany(db.shoppingList, {
+      onDelete: "cascade"
+    });
+  };
+
   return User;
 };
