@@ -14,13 +14,8 @@ export default {
   },
   signUpUser: function(userData) {
     return axios.post("/api/signup", userData);
-  },
-
-  getShoppingList: function() {
-    return axios.get("/api/shoppingList").then(results => results.data);
-  },
-  
-  saveShoppingList: function(userList) {
-    return axios.post("/api/shoppingList", userList);
   }
+
+  getShoppingList: function(userData) {
+    return axios.post("/api/shoppingList", userData).then(results => results.data);
 };

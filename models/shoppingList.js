@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-    var shopping = sequelize.define("shopping", {
+    var shoppingList = sequelize.define("shoppingList", {
       
       title: {
         type: DataTypes.STRING,
@@ -8,10 +8,10 @@ module.exports = function(sequelize, DataTypes) {
       
       completed: {
         type: DataTypes.BOOLEAN,
-        default: false,
-      },
-      
+        default: false
+      }
+
     });
 
-    return shopping;
-}
+    return shoppingList;
+};
