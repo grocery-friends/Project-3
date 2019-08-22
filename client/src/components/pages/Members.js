@@ -3,7 +3,6 @@ import React, { Component } from "react";
 import Todos from "../todo/Todo";
 // import Nav from "./layout/LoginList";
 import AddTodo from "../todo/AddTodo";
-import uuid from "uuid";
 
 import "./App.css";
 import AppBar from "../AppBar";
@@ -13,22 +12,12 @@ class Members extends Component {
   state = {
     todos: [
       {
-        id: uuid.v4(),
-        title: "2 apple",
-        completed: false
+        title: "",
+        completed: "" 
       },
-      {
-        id: uuid.v4(),
-        title: "cup of noodle",
-        completed: false
-      },
-      {
-        id: uuid.v4(),
-        title: "steak",
-        completed: false
-      }
     ]
   };
+
   markComplete = id => {
     this.setState({
       todos: this.state.todos.map(todo => {
@@ -48,7 +37,6 @@ class Members extends Component {
 
   addTodo = title => {
     const newTodo = {
-      id: uuid.v4(),
       title,
       completeted: false
     };

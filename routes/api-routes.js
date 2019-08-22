@@ -56,4 +56,18 @@ module.exports = function(app) {
     }
   });
 
+//shopping list
+  app.post("/api/shoppingList", function(req, res) {
+    console.log(req.body);
+    db.shopping.create({
+      title: req.body.title
+    }).then(function() {
+      res.redirect(307);
+    }).catch(function(err) {
+      console.log(err);
+      res.json(err);
+      // res.status(422).json(err.errors[0].message);
+    });
+  });
+
 };
