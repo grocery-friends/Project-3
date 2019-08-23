@@ -3,14 +3,16 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Fab from '@material-ui/core/Fab';
+import { positions } from '@material-ui/system';
+import { isAbsolute } from 'path';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles(theme => ({  
   fab: {
-    margin: theme.spacing(1),
-    marginLeft: 940,
-    marginRight: -12,
-    marginTop: -25
-    
+  },
+  putLeft: {
+    position:"absolute",
+    right: "10px",
+    top: "15px"
   },
   extendedIcon: {
     marginRight: theme.spacing(1),
@@ -21,7 +23,7 @@ export default function FloatingActionButtons(props) {
   const classes = useStyles();
 
   return (
-    <div>
+    <div className={classes.putLeft}>
       {/* <Button size="small" onClick={props.onClick} variant="contained" color={props.color} className={classes.button}>
         {props.btnName}
         <DeleteIcon className={classes.rightIcon} />
