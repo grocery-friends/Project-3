@@ -1,14 +1,11 @@
 import React, { Component } from "react";
-// import Header from "./components/layout/Header";
 import Todos from "../todo/Todo";
-// import Nav from "./layout/LoginList";
 import AddTodo from "../todo/AddTodo";
 import uuid from "uuid";
 import "./App.css";
-import AppBar from "../AppBar";
-import API from "../../utils/API"
-// import nameDisplay from "./nameDisplay"
-import Drawer from "../Drawer"
+import API from "../../utils/API";
+import Paper from "../paper"
+
 class Members extends Component {
   state = {
     todos: [],
@@ -58,10 +55,8 @@ class Members extends Component {
 
   render() {
     return (
-// <Nav className="App">
           <div className="container">
-            {/* <AppBar />
-            <Drawer /> */}
+            
             <AddTodo loadTodos={this.loadTodos} addTodo={this.addTodo} />
             <Todos
               todos={this.state.todos}
@@ -70,7 +65,6 @@ class Members extends Component {
               delTodo={this.delTodo}
             />
           </div>
-// </Nav>
     );
   }
 }

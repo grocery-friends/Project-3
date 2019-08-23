@@ -52,6 +52,7 @@ module.exports = function(app) {
       res.json({
         email: req.user.email,
         fName: req.body.firstName,
+        lName: req.body.lirstName,
         id: req.user.id
       });
     }
@@ -103,5 +104,67 @@ module.exports = function(app) {
       .then(function(results) {
         res.json(results);
       });
+  });
+
+  app.get("/api/nonfriends", function(req, res) {
+    db.User.findOne({
+      include: [{ model: db.User, as: "friend1" }, { model: db.User, as: "friend2"}],
+      where: {
+        id: req.user.id
+      }
+    }).then(function(user) {
+      var friends = user.getFriends();
+      var userIdsToFilter = [req.user.id, ...friends.map(friend => friend.id)];
+      console.log(userIdsToFilter);
+      var filterSet = new Set(userIdsToFilter);
+      db.User.findAll({
+        attributes: ["id", "username"]
+      }).then(function(users) {
+        res.json(users.filter(user => !filterSet.has(user.id)));
+      }).catch(function(err) {
+        console.log(err);
+        res.status(422).json(err.errors[0].message);
+      });
+    }).catch(function(err) {
+      console.log(err);
+      res.status(422).json(err.errors[0].message);
+    });
+  });
+
+  // Route for getting some data about our user to be used client side
+  app.get("/api/friends", function(req, res) {
+    db.User.findOne({
+      include: [{ model: db.User, as: "friend1" }, { model: db.User, as: "friend2"}],
+      where: {
+        id: req.user.id
+      }
+    }).then(function(user) {
+      res.json(user.getFriends());
+    }).catch(function(err) {
+      console.log(err);
+      res.status(422).json(err.errors[0].message);
+    });
+  });
+
+  // Route for getting some data about our user to be used client side
+  app.post("/api/friends", function(req, res) {
+    db.User.findOne({
+      where: {
+        username: req.body.username
+      }
+    }).then(function(friend) {
+      db.Friend.createOrdered({
+        friend1Id: friend.id,
+        friend2Id: req.user.id
+      }).then(function(friendData) {
+        res.json(friendData);
+      }).catch(function(err) {
+        console.log(err);
+        res.status(422).json(err.errors[0].message);
+      });
+    }).catch(function(err) {
+      console.log(err);
+      res.status(422).json(err.errors[0].message);
+    });
   });
 };
