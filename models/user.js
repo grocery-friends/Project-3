@@ -45,7 +45,34 @@ module.exports = function(sequelize, DataTypes) {
     User.hasMany(db.shoppingList, {
       onDelete: "cascade"
     });
+    User.belongsToMany(User, {
+      // this relationship will show as friend1 in resulting object
+      as: "friend1",
+      // the column to hold the info will be friend2Id
+      foreignKey: "friend2Id",
+      through: db.Friend,
+      required: true
+    });
+    User.belongsToMany(User, {
+      // this relationship will show as friend2 in resulting object
+      as: "friend2",
+      // the column to hold the info will be friend1Id
+      foreignKey: "friend1Id",
+      through: db.Friend,
+      required: true
+    });
   };
+  User.prototype.getFriends = function () {
+    var friend1 = this.friend1;
+    var friend2 = this.friend2;
+    if (!friend1) {
+      friend1 = [];
+    }
+    if (!friend2) {
+      friend2 = [];
+    }
+    return [...this.friend1, ...this.friend2];
+  }
 
   return User;
 };

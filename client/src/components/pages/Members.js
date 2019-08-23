@@ -1,11 +1,13 @@
 import React, { useEffect } from "react";
-import NavTabs from "../NavTabs";
 import AppBar from "../AppBar";
 import API from "../../utils/API";
 import { useStoreContext } from "../../utils/GlobalState";
 import { LOADING, SET_CURRENT_USER } from "../../utils/actions";
 import Todolist from "./Todolist"
-import Drawer from "../Drawer"
+import Drawer from "../Drawer";
+import Paper from "../paper";
+import "./member.css";
+
 
 const Members = props => {
 
@@ -22,11 +24,13 @@ const Members = props => {
  
   return (
     
-    <div>
+    <div className="cont">
       <AppBar />
+      <div className="contcont">
       <Drawer />
-      <h1 className="text-center">{state.currentUser && state.currentUser.email} is logged in</h1>
-      <Todolist />
+      <p className="text-center">{state.currentUser && state.currentUser.email}</p>
+      </div>
+      <Paper />
     </div>
   );
 }

@@ -29,10 +29,10 @@ export default function SimpleCard() {
 
     return (
         <Card className={classes.card}>
-            
-            <CardContent>
-            <Todolist />
-            </CardContent>
-        </Card>
+        <CardContent>
+
+        </CardContent>
+
+      </Card>
     );
 }
