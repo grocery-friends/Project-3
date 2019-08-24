@@ -118,7 +118,7 @@ module.exports = function(app) {
       console.log(userIdsToFilter);
       var filterSet = new Set(userIdsToFilter);
       db.User.findAll({
-        attributes: ["id", "username"]
+        attributes: ["id", "email"]
       }).then(function(users) {
         res.json(users.filter(user => !filterSet.has(user.id)));
       }).catch(function(err) {
@@ -150,7 +150,7 @@ module.exports = function(app) {
   app.post("/api/friends", function(req, res) {
     db.User.findOne({
       where: {
-        username: req.body.username
+        email: req.body.email
       }
     }).then(function(friend) {
       db.Friend.createOrdered({

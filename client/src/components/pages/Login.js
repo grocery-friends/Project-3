@@ -11,6 +11,7 @@ import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
+import LockIcon from '@material-ui/icons/Lock';
 import API from "../../utils/API";
 import "./Login.css"
 
@@ -88,7 +89,7 @@ export default function SignInSide() {
         
         <div className={classes.paper}>
           <Avatar className={classes.avatar}>
-            
+            <LockIcon/>
           </Avatar>
           <Typography component="h1" variant="h5">
             Sign in

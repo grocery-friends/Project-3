@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Proptypes from "prop-types";
 import Button from "../button";
-import "./Todoitem.css";
+import "./todo.css"
 import Checkbox from "../Checkbox"
 import { relative } from "path";
 
