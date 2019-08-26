@@ -26,7 +26,7 @@ const useStyles = makeStyles(theme => ({
 export default function ButtonAppBar() {
   const classes = useStyles();
 
-  const [state, dispatch] = useStoreContext();
+  const [dispatch] = useStoreContext();
 
   const handleOnClick = event => {
     event.preventDefault();
