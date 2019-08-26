@@ -8,15 +8,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 import AssignmentSharpIcon from '@material-ui/icons/AssignmentSharp';
 import AssignmentTurnedInSharpIcon from '@material-ui/icons/AssignmentTurnedInSharp';
 
-const GreenCheckbox = withStyles({
-  root: {
-    color: green[400],
-    '&$checked': {
-      color: green[600],
-    },
-  },
-  checked: {},
-})(props => <Checkbox color="default" {...props} />);
+
 
 export default function CheckboxLabels(props) {
   const [state, setState] = React.useState({

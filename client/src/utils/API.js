@@ -37,4 +37,8 @@ getNonFriends: function() {
 addFriends: function(id) {
   return axios.post("/api/friends", id).then(results => results.data);
 },
+
+getFriends: function() {
+  return axios.get("/api/friends").then(results => results.data);
+},
 };

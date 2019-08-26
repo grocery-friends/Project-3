@@ -22,7 +22,6 @@ export class Todoitem extends Component {
       <div style={this.getStyle()}>
         <p>
           <Checkbox
-            
             onChange={this.props.markComplete.bind(this, this.props.todo)}
           />{" "}
           {title}

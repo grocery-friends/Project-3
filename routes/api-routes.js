@@ -160,11 +160,11 @@ module.exports = function(app) {
         res.json(friendData);
       }).catch(function(err) {
         console.log(err);
-        res.status(422).json(err.errors[0].message);
+        res.status(422).json(err);
       });
     }).catch(function(err) {
       console.log(err);
-      res.status(422).json(err.errors[0].message);
+      res.status(422).json(err);
     });
   });
 };

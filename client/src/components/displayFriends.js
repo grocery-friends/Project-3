@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import API from "../utils/API";
-import Button3 from "./button3";
-import Checkbox2 from "./Checkbox2"
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
 
-class Books extends Component {
+class Friends extends Component {
     // Setting our component's initial state
     state = {
         users: [],
@@ -12,12 +12,12 @@ class Books extends Component {
 
     // When the component mounts, load all books and save them to this.state.books
     componentDidMount() {
-        this.loadUsers();
+        this.loadfriends();
     }
 
     // Loads all books  and sets them to this.state.books
-    loadUsers = () => {
-        API.getNonFriends()
+    loadfriends = () => {
+        API.getFriends()
             .then(users => {
                 this.setState({ users, email: "" })
                 console.log(users, "users")
@@ -27,31 +27,32 @@ class Books extends Component {
     };
     onClick = email => event => {
         event.preventDefault();
-        
-          API.addFriends({
+
+        API.addFriends({
             email
-          })
+        })
             .then(res => window.location.replace("/members"))
             .catch(err => console.log(err));
-        
-      };
+
+    };
 
     render() {
         return (
             <div>
-
                 {this.state.users.map(user => {
-                    return (
-                        <ul>
-                        <Button3 text={user.email} value={user.email} onClick={this.onClick(user.email)}  />
-                        
-                        </ul>
-                    );
+                    return(
+            
+                    
+                        <ListItem button key={user.email}>
+                            <ListItemText primary={user.email} />
+                        </ListItem>
+                    
+                
+                    )
                 })}
-
             </div>
         );
     }
 }
 
-export default Books;
+export default Friends;
