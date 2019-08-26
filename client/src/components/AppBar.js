@@ -4,7 +4,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
+
 import { useStoreContext } from "../utils/GlobalState";
 import { LOADING, CLEAR_CURRENT_USER } from "../utils/actions";
 import API from "../utils/API";
@@ -13,6 +13,7 @@ import API from "../utils/API";
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
+    
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -40,11 +41,11 @@ export default function ButtonAppBar() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar position="static" color="primary">
         <Toolbar>
           {/* <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
           </IconButton> */}
-          <Typography variant="h6" className={classes.title}>
+          <Typography variant="h4" className={classes.title}>
           Grocery Pals
           </Typography>
           <Button onClick={handleOnClick} color="inherit">Logout</Button>

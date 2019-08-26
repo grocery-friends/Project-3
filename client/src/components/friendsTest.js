@@ -25,13 +25,13 @@ class Books extends Component {
             )
             .catch(err => console.log(err));
     };
-    onClick = event => {
+    onClick = email => event => {
         event.preventDefault();
         
           API.addFriends({
-            email: this.state.email,
+            email
           })
-            .then(res => this.props.loadUsers())
+            .then(res => window.location.replace("/members"))
             .catch(err => console.log(err));
         
       };
@@ -43,7 +43,8 @@ class Books extends Component {
                 {this.state.users.map(user => {
                     return (
                         <ul>
-                        <Button3 text={user.email} value={user.email} onClick={this.onClick}  />
+                        <Button3 text={user.email} value={user.email} onClick={this.onClick(user.email)}  />
+                        
                         </ul>
                     );
                 })}

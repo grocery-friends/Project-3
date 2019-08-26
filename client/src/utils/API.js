@@ -19,6 +19,9 @@ export default {
   GetShoppingList: function() {
     return axios.get("/api/shoppingList").then(results => results.data);
 },
+GetShoppingListFriend: function(friend) {
+  return axios.get("/api/shoppingList/"+friend).then(results => results.data);
+},
   PostShoppingList: function(shoppingData) {
   return axios.post("/api/shoppingList", shoppingData).then(results => results.data);
 },
@@ -34,7 +37,11 @@ UpdateShoppingList: function(shoppingData) {
 getNonFriends: function() {
   return axios.get("/api/nonfriends").then(results => results.data);
 },
-addFriends: function(friends) {
-  return axios.post("/api/friends", friends).then(results => results.data);
+addFriends: function(id) {
+  return axios.post("/api/friends", id).then(results => results.data);
+},
+
+getFriends: function() {
+  return axios.get("/api/friends").then(results => results.data);
 },
 };

@@ -3,7 +3,7 @@ import Proptypes from "prop-types";
 import Button from "../button";
 import "./todo.css"
 import Checkbox from "../Checkbox"
-import { relative } from "path";
+
 
 export class Todoitem extends Component {
   getStyle = () => {
@@ -22,7 +22,6 @@ export class Todoitem extends Component {
       <div style={this.getStyle()}>
         <p>
           <Checkbox
-            
             onChange={this.props.markComplete.bind(this, this.props.todo)}
           />{" "}
           {title}
