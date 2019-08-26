@@ -34,7 +34,7 @@ UpdateShoppingList: function(shoppingData) {
 getNonFriends: function() {
   return axios.get("/api/nonfriends").then(results => results.data);
 },
-addFriends: function(friends) {
-  return axios.post("/api/friends", friends).then(results => results.data);
+addFriends: function(id) {
+  return axios.post("/api/friends", id).then(results => results.data);
 },
 };

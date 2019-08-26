@@ -18,7 +18,8 @@ export default function PaperSheet() {
   return (
     <div className="paperCont">
       <Paper className={classes.root}>
-        <Autocomplete />
+          <h1>Add Friends</h1>
+        {/* <Autocomplete /> */}
         {/* <Button3 /> */}
         <FriendsTest />
       </Paper>

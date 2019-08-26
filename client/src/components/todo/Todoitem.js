@@ -3,7 +3,7 @@ import Proptypes from "prop-types";
 import Button from "../button";
 import "./todo.css"
 import Checkbox from "../Checkbox"
-import { relative } from "path";
+
 
 export class Todoitem extends Component {
   getStyle = () => {
