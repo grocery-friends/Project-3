@@ -1,5 +1,8 @@
 import React, { Component } from "react";
-import API from "../../utils/API"
+import API from "../../utils/API";
+import Textinput from "../Textinput";
+import Button2 from "../button2"
+import "./todo.css"
 export class AddTodo extends Component {
 
     state = {
@@ -23,8 +26,9 @@ export class AddTodo extends Component {
 
   render() {
     return (
+      <div className="inputdiv">
       <form onSubmit={this.onSubmit} style={{    display: 'flex'  }}>
-        <input 
+        <Textinput
         type="text" 
         name="title" 
         style= {{   flex: '10', padding: '5px'}}
@@ -32,13 +36,18 @@ export class AddTodo extends Component {
         value={this.state.title}
         onChange={this.onChange} 
         />
-        <input
+        <Button2
+        color="primary"
         type="submit"
         value="Submit"
         className="btn"
         style={{flex: '1'}}/>
       </form>
-    );
+      <div>
+       
+      </div>
+      </div>
+    );    
   }
 }
 

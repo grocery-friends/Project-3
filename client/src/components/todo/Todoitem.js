@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import Proptypes from "prop-types";
 import Button from "../button";
-import "./Todoitem.css";
+import "./todo.css"
 import Checkbox from "../Checkbox"
+import { relative } from "path";
 
 export class Todoitem extends Component {
   getStyle = () => {
@@ -10,7 +11,8 @@ export class Todoitem extends Component {
       background: "#f4f4f4",
       padding: "10px",
       borderBottom: "1px #ccc dotted",
-      textDecoration: this.props.todo.completed ? "line-through" : "none"
+      textDecoration: this.props.todo.completed ? "line-through" : "none",
+      position:"relative"
     };
   };
 

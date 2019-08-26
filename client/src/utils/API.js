@@ -29,6 +29,12 @@ export default {
 
 UpdateShoppingList: function(shoppingData) {
   return axios.put("/api/shoppingList", shoppingData).then(results => results.data);
-}
+},
 
+getNonFriends: function() {
+  return axios.get("/api/nonfriends").then(results => results.data);
+},
+addFriends: function(friends) {
+  return axios.post("/api/friends", friends).then(results => results.data);
+},
 };

@@ -2,6 +2,7 @@ import React, { createContext, useReducer, useContext } from "react";
 import {
     SET_CURRENT_USER,
     CLEAR_CURRENT_USER,
+    GET_USERS,
     LOADING
 } from "./actions";
 
@@ -17,6 +18,12 @@ const reducer = (state, action) => {
                 currentUser: action.user,
                 loading: false
             };
+            case GET_USERS:
+                return {
+                    ...state,
+                    currentUsers: action.users,
+                    loading: false
+                };
         case CLEAR_CURRENT_USER:
             return {
                 ...state,

@@ -7,7 +7,8 @@ import Todolist from "./Todolist"
 import Drawer from "../Drawer";
 import Paper from "../paper";
 import "./member.css";
-
+import Autocomplete from "../Autocomplete";
+import Paper2 from "../paper2"
 
 const Members = props => {
 
@@ -28,9 +29,10 @@ const Members = props => {
       <AppBar />
       <div className="contcont">
       <Drawer />
-      <p className="text-center">{state.currentUser && state.currentUser.email}</p>
+      <div className="text-center">{state.currentUser && state.currentUser.email}</div>
       </div>
       <Paper />
+      <Paper2 />
     </div>
   );
 }
