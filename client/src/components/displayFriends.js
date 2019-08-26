@@ -2,12 +2,28 @@ import React, { Component } from "react";
 import API from "../utils/API";
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
+import { makeStyles } from '@material-ui/core/styles';
+import Modal from '@material-ui/core/Modal';
+
+const useStyles = makeStyles(theme => ({
+    paper: {
+        position: 'absolute',
+        width: 400,
+        backgroundColor: theme.palette.background.paper,
+        border: '2px solid #000',
+        boxShadow: theme.shadows[5],
+        padding: theme.spacing(2, 4, 3),
+    },
+}));
 
 class Friends extends Component {
     // Setting our component's initial state
     state = {
         users: [],
-        email: ""
+        email: "",
+        modal: false,
+        friendList: "",
+        styles: useStyles
     };
 
     // When the component mounts, load all books and save them to this.state.books
@@ -26,9 +42,14 @@ class Friends extends Component {
             .catch(err => console.log(err));
     };
 
-    getFriendList = (event) =>{
+    getFriendList = (event) => {
         console.log(event.target.textContent)
-        this.props.friendList(event.target.textContent)
+        this.props.friendList(event.target.textContent).then(data => {
+            console.log("Setting modal to true")
+            this.setState({ friendList: data })
+            this.props.handleModal(data)
+        }
+        )
     }
     // onClick = email => event => {
     //     event.preventDefault();
@@ -45,14 +66,26 @@ class Friends extends Component {
         return (
             <div>
                 {this.state.users.map(user => {
-                    return(
-            
-                    
-                        <ListItem button onClick={this.getFriendList} key={user.email}>
-                            <ListItemText name={user.email} primary={user.email} />
-                        </ListItem>
-                    
-                
+                    return (
+                        <>
+
+                            <ListItem button onClick={this.getFriendList} key={user.email}>
+                                <ListItemText name={user.email} primary={user.email} />
+                            </ListItem>
+                            <Modal
+                                aria-labelledby="simple-modal-title"
+                                aria-describedby="simple-modal-description"
+                                open={this.state.modal}
+                            >
+                                <div className={this.state.styles.paper}>
+                                    <h2 id="simple-modal-title">Text in a modal</h2>
+                                    <p id="simple-modal-description">
+                                        Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+                                    </p>
+                                </div>
+                            </Modal>
+                        </>
+
                     )
                 })}
             </div>

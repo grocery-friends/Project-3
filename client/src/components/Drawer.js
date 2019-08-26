@@ -47,7 +47,7 @@ export default function TemporaryDrawer(props) {
 
       <Divider />
       <br/>
-        <DisplayFriend friendList={props.friendList}/>
+        <DisplayFriend handleModal={props.handleModal} friendList={props.friendList}/>
       <Divider />
     </div>
   );

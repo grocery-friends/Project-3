@@ -9,3 +9,10 @@
     border: 3px; 
     padding: 10px;
 }
+
+.friendModal {
+    position: absolute;
+      width: 800;
+      border: '2px solid #000';
+      background-color: white;
+  }

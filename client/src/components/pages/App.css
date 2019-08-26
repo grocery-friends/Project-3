@@ -30,3 +30,9 @@ a{
 .btn:hover {
   background: #666;
 }
+
+.friendModal {
+  position: absolute;
+    width: 800;
+    border: '2px solid #000';
+}
