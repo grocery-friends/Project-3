@@ -19,6 +19,9 @@ export default {
   GetShoppingList: function() {
     return axios.get("/api/shoppingList").then(results => results.data);
 },
+GetShoppingListFriend: function(friend) {
+  return axios.get("/api/shoppingList/"+friend).then(results => results.data);
+},
   PostShoppingList: function(shoppingData) {
   return axios.post("/api/shoppingList", shoppingData).then(results => results.data);
 },

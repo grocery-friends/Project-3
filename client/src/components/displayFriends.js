@@ -25,16 +25,21 @@ class Friends extends Component {
             )
             .catch(err => console.log(err));
     };
-    onClick = email => event => {
-        event.preventDefault();
 
-        API.addFriends({
-            email
-        })
-            .then(res => window.location.replace("/members"))
-            .catch(err => console.log(err));
+    getFriendList = (event) =>{
+        console.log(event.target.textContent)
+        this.props.friendList(event.target.textContent)
+    }
+    // onClick = email => event => {
+    //     event.preventDefault();
 
-    };
+    //     API.addFriends({
+    //         email
+    //     })
+    //         .then(res => window.location.replace("/members"))
+    //         .catch(err => console.log(err));
+
+    // };
 
     render() {
         return (
@@ -43,8 +48,8 @@ class Friends extends Component {
                     return(
             
                     
-                        <ListItem button key={user.email}>
-                            <ListItemText primary={user.email} />
+                        <ListItem button onClick={this.getFriendList} key={user.email}>
+                            <ListItemText name={user.email} primary={user.email} />
                         </ListItem>
                     
                 

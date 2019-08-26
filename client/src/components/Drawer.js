@@ -19,7 +19,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function TemporaryDrawer() {
+export default function TemporaryDrawer(props) {
   const classes = useStyles();
   const [state, setState] = React.useState({
     top: false,
@@ -44,8 +44,10 @@ export default function TemporaryDrawer() {
       onKeyDown={toggleDrawer(side, false)}
     >
       <h1>Grocery Pals</h1>
+
       <Divider />
-        <DisplayFriend />
+      <br/>
+        <DisplayFriend friendList={props.friendList}/>
       <Divider />
     </div>
   );

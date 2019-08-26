@@ -22,13 +22,18 @@ const Members = props => {
       .catch(err => console.log(err));
   }, []);
 
+  function handleFriendList (friend){
+    API.GetShoppingListFriend(friend).then(data=>{
+      console.log(data)
+    })
+  }
  
   return (
     
     <div className="cont">
       <AppBar />
       <div className="contcont">
-      <Drawer />
+      <Drawer friendList={handleFriendList}/>
       <div className="text-center">{state.currentUser && state.currentUser.email}</div>
       </div>
       <Paper />

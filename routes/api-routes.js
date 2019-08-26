@@ -83,6 +83,24 @@ module.exports = function(app) {
     });
   });
 
+  app.get("/api/shoppingList/:friend", function(req, res){
+    db.User.findOne({
+      where: {
+        email: req.params.friend
+      }
+    }).then(function(results){
+      console.log(results.dataValues.id)
+      db.shoppingList.findAll({
+        where: {
+          UserId: results.dataValues.id
+        }
+      }).then(data=>{
+        res.json(data)
+      })
+    })
+  })
+  
+
   app.delete("/api/shoppingList/:id", function(req, res) {
     db.shoppingList.destroy({
       where: {
