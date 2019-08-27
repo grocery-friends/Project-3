@@ -1,0 +1,9 @@
+.bigImage{
+    background-image: url("https://data.whicdn.com/images/313256761/original.gif");
+    background-repeat: no-repeat;
+    background-size: 1100px
+}
+
+.loginCont {
+    background-color: pink
+}

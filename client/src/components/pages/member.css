@@ -1,0 +1,25 @@
+.cont{
+    background-color: grey;
+    
+}
+
+.contcont{
+    margin: auto;
+    width: 80%;
+    border: 3px; 
+    padding: 10px;
+}
+
+.friendModal {
+    text-align: center;
+      width: 30%;
+      height: 70%;
+      border: '2px solid #000';
+      background-color: white;
+     float: right;
+     margin-right: 200px;
+  }
+
+modal{
+    margin-right: 200px
+}
