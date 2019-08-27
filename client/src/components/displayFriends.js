@@ -72,18 +72,6 @@ class Friends extends Component {
                             <ListItem button onClick={this.getFriendList} key={user.email}>
                                 <ListItemText name={user.email} primary={user.email} />
                             </ListItem>
-                            <Modal
-                                aria-labelledby="simple-modal-title"
-                                aria-describedby="simple-modal-description"
-                                open={this.state.modal}
-                            >
-                                <div className={this.state.styles.paper}>
-                                    <h2 id="simple-modal-title">Text in a modal</h2>
-                                    <p id="simple-modal-description">
-                                        Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-                                    </p>
-                                </div>
-                            </Modal>
                         </>
 
                     )

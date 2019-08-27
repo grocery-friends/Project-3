@@ -11,8 +11,15 @@
 }
 
 .friendModal {
-    position: absolute;
-      width: 800;
+    text-align: center;
+      width: 30%;
+      height: 70%;
       border: '2px solid #000';
       background-color: white;
+     float: right;
+     margin-right: 200px;
   }
+
+modal{
+    margin-right: 200px
+}

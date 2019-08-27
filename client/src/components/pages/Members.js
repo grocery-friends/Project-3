@@ -9,6 +9,7 @@ import "./member.css";
 import Paper2 from "../paper2";
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
+import NameCard from "../nameCard";
 
     // getModalStyle is not a pure function, we roll the style only on the first render
 // const [state, dispatch] = useStoreContext();
@@ -35,10 +36,25 @@ class Members extends React.Component {
 
   state ={
     modal: false,
-    currentUser: {email: "dummy"},
+    user: {email: ""},
     classes: useStyles,
     friendList: []
   }
+
+  componentDidMount() {
+    this.loadCurrentUsers();
+}
+
+// Loads all books  and sets them to this.state.books
+loadCurrentUsers = () => {
+    API.getCurrentUser()
+        .then(user => {
+            this.setState({ user, email: "" })
+            console.log(user, "user")
+        }
+        )
+        .catch(err => console.log(err));
+};
 
   handleModal = (info)=>{
     this.setState({modal:!this.state.modal})
@@ -75,7 +91,9 @@ class Members extends React.Component {
       <AppBar />
       <div className="contcont">
       <Drawer friendList={this.handleFriendList} handleModal = {this.handleModal}/>
-      <div className="text-center">{this.state.currentUser && this.state.currentUser.email}</div>
+      <div className="text-center"></div>
+      {/* <NameCard /> */}
+      <h1> Welcome, {this.state.user.email} </h1>
       </div>
       <Paper />
       <Paper2 />
@@ -86,12 +104,13 @@ class Members extends React.Component {
         onClose={this.handleClose}
       >
         <div  className={"friendModal"}>
-          <h2 id="simple-modal-title">Text in a modal</h2>
-          
+          <br/>
+          <h2>Friend's Items</h2>
+          <br></br>
           <div id="simple-modal-description">
    {this.state.friendList.length? this.state.friendList.map(listItem=>{
              return <p>{listItem.title}</p>
-           }): (<div>no items</div>)}
+           }): (<div>No items currently on list!</div>)}
            
           </div>
           {/* <SimpleModal /> */}
