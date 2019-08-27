@@ -33,10 +33,10 @@ export default function TextFields(props) {
     currency: 'EUR',
   });
 
-  const handleChange = name => event => {
-    props.onChange();
-    setValues({ ...values, [name]: event.target.value });
-  };
+  // const handleChange = name => event => {
+  //   props.onChange();
+  //   setValues({ ...values, [name]: event.target.value });
+  // };
 
   return (
 

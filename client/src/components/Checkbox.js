@@ -1,6 +1,5 @@
 import React from 'react';
-import { withStyles } from '@material-ui/core/styles';
-import { green } from '@material-ui/core/colors';
+
 // import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
@@ -17,9 +16,9 @@ export default function CheckboxLabels(props) {
     checkedG: true,
   });
 
-  const handleChange = name => event => {
-    setState({ ...state, [name]: event.target.checked });
-  };
+  // const handleChange = name => event => {
+  //   setState({ ...state, [name]: event.target.checked });
+  // };
 
   return (
       <FormControlLabel

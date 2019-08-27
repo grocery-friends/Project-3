@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import API from "../utils/API";
 import Button3 from "./button3";
-import Checkbox2 from "./Checkbox2"
+
 
 class Books extends Component {
     // Setting our component's initial state

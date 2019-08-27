@@ -3,7 +3,7 @@ import API from "../utils/API";
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import { makeStyles } from '@material-ui/core/styles';
-import Modal from '@material-ui/core/Modal';
+
 
 const useStyles = makeStyles(theme => ({
     paper: {
